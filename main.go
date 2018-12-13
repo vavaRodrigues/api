@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"net/http"
 
-	"github.com/cloud104/tenants/cmd/rest/handler"
 	"github.com/gorilla/mux"
+	"github.com/vavarodrigues/cmd/rest/handler"
 )
 
 func main() {
