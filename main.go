@@ -4,7 +4,10 @@ import (
 	"fmt"
 	"net/http"
 
+<<<<<<< HEAD
 	"github.com/api/cmd/rest/handler"
+=======
+>>>>>>> 20b87cdc93b7131c5fb1c14dbaf8436ab0ca02c0
 	"github.com/gorilla/mux"
 )
 

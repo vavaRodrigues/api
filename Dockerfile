@@ -1,17 +1,20 @@
-FROM golang:1.11 AS builder
+FROM golang:1.11
 
-# Download and install the latest release of dep
-ADD https://github.com/golang/dep/releases/download/v0.4.1/dep-linux-amd64 /usr/bin/dep
-RUN chmod +x /usr/bin/dep
+# Go envs
+ENV GOPATH /go/
+ENV APP_HOME $GOPATH/src/github.com/vavarodrigues/api/
+RUN mkdir -p $APP_HOME
+WORKDIR $APP_HOME
 
-# Copy the code from the host and compile it
-WORKDIR $GOPATH/src/github.com/username/repo
+# Go Deps
+RUN curl https://raw.githubusercontent.com/golang/dep/master/install.sh | sh
+
+# Project Deps
 COPY Gopkg.toml Gopkg.lock ./
-RUN dep ensure --vendor-only
-COPY . ./
-RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix nocgo -o /app .
+RUN dep ensure -vendor-only
 
-FROM scratch
-COPY --from=builder /app ./
+COPY . $APP_HOME
 
-ENTRYPOINT ["./app"]
+EXPOSE 8080
+
+CMD ["api"]
