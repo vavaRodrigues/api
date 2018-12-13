@@ -4,12 +4,13 @@ import (
 	"fmt"
 	"net/http"
 
+	"github.com/cloud104/tenants/cmd/rest/handler"
 	"github.com/gorilla/mux"
 )
 
 func main() {
 	r := mux.NewRouter()
-	r.HandleFunc("/", homeHandler).Methods("GET")
+	r.HandleFunc("/", HomeHandler).Methods("GET")
 	r.HandleFunc("/", redisHandler).Methods("POST")
 
 	http.Handle("/", r)
