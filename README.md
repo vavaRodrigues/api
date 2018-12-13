@@ -1,9 +1,5 @@
 # api
 
-```
-    docker build -t api .
-```
+`docker-compose build --no-cache`
 
-```
- docker-compose up web
-```
+`docker-compose up web`
