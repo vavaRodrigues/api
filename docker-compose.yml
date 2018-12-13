@@ -2,7 +2,7 @@ version: '3.7'
 
 services:
   web:
-    image: api:latest
+    image: api
     build: .
     ports:
       - "8080:8080"

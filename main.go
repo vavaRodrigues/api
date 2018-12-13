@@ -23,7 +23,7 @@ func homeHandler(w http.ResponseWriter, r *http.Request) {
 func redisHandler(w http.ResponseWriter, r *http.Request) {
 	ping()
 
-	fmt.Fprintf(w, "Redis %s", ping())
+	fmt.Fprintf(w, "~> Redis %s", ping())
 }
 
 func ping() error {
