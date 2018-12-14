@@ -2,9 +2,10 @@ package handler
 
 import (
 	"fmt"
-	"github.com/vavarodrigues/api/pkg/store"
 	"io/ioutil"
 	"net/http"
+
+	"github.com/vavarodrigues/api/pkg/store"
 )
 
 func HomeHandler(w http.ResponseWriter, r *http.Request) {
