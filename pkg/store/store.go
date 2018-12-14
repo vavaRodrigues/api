@@ -1,6 +1,7 @@
 package store
 
 import (
+	"fmt"
 	"github.com/go-redis/redis"
 )
 
@@ -15,11 +16,15 @@ type StoreSettings struct {
 }
 
 func NewStore(settings StoreSettings) *Store {
+	fmt.Printf("%+v\n", settings)
 	client := redis.NewClient(&redis.Options{
 		Addr:     settings.Addr,
 		Password: settings.Password, // no password set
-		DB:       settings.DB,       // use default DB
+		DB:       0,                 // use default DB
 	})
+
+	pong, err := client.Ping().Result()
+	fmt.Println(pong, err)
 
 	return &Store{redis: client}
 }

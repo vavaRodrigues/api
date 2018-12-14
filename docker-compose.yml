@@ -5,11 +5,14 @@ services:
     image: api
     build: .
     command: go run main.go
-    env_file:
-      - dev.env
+    environment:
+      - ADDR=redis:6379
+      - PASSWORD=
     ports:
       - "8080:8080"
     depends_on:
       - redis
   redis:
     image: redis
+    ports:
+      - "6379:6379"
