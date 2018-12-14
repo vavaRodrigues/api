@@ -11,6 +11,7 @@ func main() {
 	r := mux.NewRouter()
 	r.HandleFunc("/", handler.HomeHandler).Methods("GET")
 	r.HandleFunc("/", handler.GetKeyHandler).Methods("POST")
+	r.HandleFunc("/push", handler.PushHandler).Methods("POST")
 
 	storeMiddleware := middleware.NewStoreMiddleware()
 	r.Use(storeMiddleware.Middleware)
