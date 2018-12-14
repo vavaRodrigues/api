@@ -8,7 +8,7 @@ import (
 // NewClient newClient
 func NewClient() *redis.Client {
 	client := redis.NewClient(&redis.Options{
-		Addr:     "redis:6379",
+		Addr:     "redis:6379redis:6379",
 		Password: "", // no password set
 		DB:       0,  // use default DB
 	})
